@@ -31,6 +31,8 @@ import geni.rspec.igext as IG
 import geni.rspec.emulab.pnext as PN
 import geni.rspec.emulab as emulab
 
+OAI_CN5G_DEPLOY_SCRIPT = os.path.join(BIN_PATH, "deploy-oai-cn5g.sh")
+
 pc = portal.Context()
 request = pc.makeRequestRSpec()
 
@@ -39,6 +41,20 @@ pc.defineParameter("phystype",  "Optional hardware type",
                    portal.ParameterType.STRING, "d430",
                    longDescription="Specify hardware type (d430 or d820)")
 
+pc.defineParameter(
+    name="repo_url", 
+    description="GitHub repo for CN5G", 
+    typ=portal.ParameterType.STRING,
+    defaultValue="https://github.com/saimeghanakuchana/ReorderingOAI.git"
+    )
+
+pc.defineParameter(
+    name="repo_branch", 
+    description="Branch or commit hash", 
+    typ=portal.ParameterType.STRING, 
+    defaultValue="main"
+    )
+
 # Retrieve the values the user specifies during instantiation.
 params = pc.bindParameters()
 pc.verifyParameters()
@@ -46,6 +62,10 @@ pc.verifyParameters()
 node = request.RawPC("node")
 node.hardware_type = params.phystype
 node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD"
+
+# CN5G Startup Script
+deploy_cmd = "local/repository/deploy-oai-cn5g.sh {} {}".format(params.repo_url, params.repo_branch)
+cn_node.addService(rspec.Execute(shell="bash", command=deploy_cmd))
 
 node.startVNC()
 
