@@ -67,7 +67,7 @@ node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU22-64-STD
 deploy_cmd = "local/repository/deploy-oai-cn5g.sh {} {}".format(params.repo_url, params.repo_branch)
 cn_node.addService(rspec.Execute(shell="bash", command=deploy_cmd))
 
-node.startVNC()
+
 
 tour = IG.Tour()
 tour.Description(IG.Tour.MARKDOWN, tourDescription)
