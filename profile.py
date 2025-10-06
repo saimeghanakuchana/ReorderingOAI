@@ -29,14 +29,14 @@ On `cn5g-docker-host`, open a terminal session via SSH, or using the shell optio
 Start the 5G core network services.
 
 ```
-cd /var/tmp/oai-cn5g
-sudo docker compose up -d
+cd /mydata/oai-cn5g/docker-compose
+sudo docker compose -f docker-compose-basic-nrf.yaml up -d 
 ```
  
 It will take several seconds for the services to start up. Since we started the services in detached mode, you can check the status of the services with:
 
 ```
-sudo docker compose ps
+sudo docker compose -f docker-compose-basic-nrf.yaml ps
 ```
 
 In another session, start following the logs for the AMF. This way you can see when the UE attaches to the network.
