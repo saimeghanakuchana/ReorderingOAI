@@ -74,6 +74,15 @@ function setup_cn_node {
 
 setup_cn_node
 
+# Copy pre-loaded CN5G repo from /local/repository into working dir
+LOCAL_SRC="/local/repository/oai-cn5g-fed"
+CN_DIR="/mydata/oai-cn5g"
+
+mkdir -p "$CN_DIR"
+cp -r "$LOCAL_SRC"/* "$CN_DIR"
+
+cd "$CN_DIR"
+
 # # Optional: build step if your Docker images are custom
 # # echo "Building Docker images..."
 # # sudo docker compose -f docker-compose-basic-nrf.yaml build
