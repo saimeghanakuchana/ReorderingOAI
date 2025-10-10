@@ -29,7 +29,7 @@ fi
 CORE_LOCAL_SRC="/local/repository/oai-cn5g-fed"
 CN_WORKING_DIR="/mydata/oai-cn5g"
 SRCDIR="/mydata"
-ETCDIR=/local/repository/etc
+ETCDIR="/local/repository/etc"
 
 # Define working directory for RAN and UE 
 RAN_LOCAL_SRC="/local/repository/openairinterface5g"  # Read-only repo you pre-loaded into the experiment
