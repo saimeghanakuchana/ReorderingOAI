@@ -111,10 +111,10 @@ request = pc.makeRequestRSpec()
 # role = "cn"
 
 # CN5G Host
-cn_node = request.RawPC("cn5g-host")
-cn_node.component_manager_id = COMP_MANAGER_ID
-cn_node.hardware_type = params.cn_nodetype
-cn_node.disk_image = UBUNTU_IMG
+node = request.RawPC("oai-allinone")
+node.component_manager_id = COMP_MANAGER_ID
+node.hardware_type = params.cn_nodetype
+node.disk_image = UBUNTU_IMG
 
 # CN5G Interface + Subnet
 # cn_if = cn_node.addInterface("cn-if")
@@ -135,7 +135,11 @@ cn_node.disk_image = UBUNTU_IMG
 #deploy_cmd = "/local/repository/bin/deploy-oai-cn5g.sh {} {}".format(params.repo_url, params.repo_branch)
 #deploy_cmd = "/local/repository/deploy-oai-cn5g.sh /local/repository/oai-cn5g-fed"
 #cn_node.addService(rspec.Execute(shell="bash", command=deploy_cmd))
-cn_node.addService(rspec.Execute(shell="bash", command="bash /local/repository/deploy-oai-cn5g.sh /local/repository/oai-cn5g-fed"))
+#node.addService(rspec.Execute(shell="bash", command="bash /local/repository/deploy-oai-cn5g.sh /local/repository/oai-cn5g-fed"))
+node.addService(rspec.Execute(shell="bash",command="bash /local/repository/deploy.sh HEAD cn"))
+node.addService(rspec.Execute(shell="bash",command="bash /local/repository/deploy.sh HEAD nodeb"))
+node.addService(rspec.Execute(shell="bash",command="bash /local/repository/deploy.sh HEAD ue"))
+
 
 # for frange in params.freq_ranges:
 #     request.requestSpectrum(frange.freq_min, frange.freq_max, 0)
