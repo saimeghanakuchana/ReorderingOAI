@@ -2,6 +2,8 @@
 # Exit on error
 set -e
 
+NODE_ROLE=$1
+
 cd /
 sudo mkdir mydata
 sudo /usr/local/etc/emulab/mkextrafs.pl -f /mydata
