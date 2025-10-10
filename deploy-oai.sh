@@ -38,7 +38,7 @@ RAN_WORKING_DIR="$SRCDIR/openairinterface5g"              # Writable working dir
 if [ ! -d "$RAN_WORKING_DIR/.git" ]; then
     echo "Copying openairinterface5g repo to working dir..."
     mkdir -p "$RAN_WORKING_DIR"
-    cp -r "$RAN_LOCAL_SRC"/* "$RAN_WORKING_DIR"
+    cp -a "$RAN_LOCAL_SRC"/* "$RAN_WORKING_DIR"
 else
     echo "Repo already copied to $RAN_WORKING_DIR — skipping."
 fi
