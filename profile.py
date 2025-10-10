@@ -136,9 +136,9 @@ node.disk_image = UBUNTU_IMG
 #deploy_cmd = "/local/repository/deploy-oai-cn5g.sh /local/repository/oai-cn5g-fed"
 #cn_node.addService(rspec.Execute(shell="bash", command=deploy_cmd))
 #node.addService(rspec.Execute(shell="bash", command="bash /local/repository/deploy-oai-cn5g.sh /local/repository/oai-cn5g-fed"))
-node.addService(rspec.Execute(shell="bash",command="bash /local/repository/deploy.sh HEAD cn"))
-node.addService(rspec.Execute(shell="bash",command="bash /local/repository/deploy.sh HEAD nodeb"))
-node.addService(rspec.Execute(shell="bash",command="bash /local/repository/deploy.sh HEAD ue"))
+node.addService(rspec.Execute(shell="bash",command="bash /local/repository/deploy-oai.sh HEAD cn"))
+node.addService(rspec.Execute(shell="bash",command="bash /local/repository/deploy-oai.sh HEAD nodeb"))
+node.addService(rspec.Execute(shell="bash",command="bash /local/repository/deploy-oai.sh HEAD ue"))
 
 
 # for frange in params.freq_ranges:
