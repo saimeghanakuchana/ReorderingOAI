@@ -172,11 +172,11 @@ if [ $NODE_ROLE == "cn" ]; then
 elif [ $NODE_ROLE == "nodeb" ]; then
     BUILD_ARGS="--gNB"
     setup_ran_node
-    configure_nodeb
+    #configure_nodeb
 elif [ $NODE_ROLE == "ue" ]; then
     BUILD_ARGS="--nrUE"
     setup_ran_node
-    configure_ue
+    #configure_ue
 fi
 
 touch $SRCDIR/oai-setup-complete
