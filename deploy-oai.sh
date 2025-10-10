@@ -4,18 +4,24 @@ set -e
 
 NODE_ROLE=$1
 
-cd /
-sudo mkdir mydata
-sudo /usr/local/etc/emulab/mkextrafs.pl -f /mydata
+if [ ! -d /mydata ]; then
+    echo "Creating /mydata volume..."
+    cd /
+    sudo mkdir /mydata
+    sudo /usr/local/etc/emulab/mkextrafs.pl -f /mydata
 
-# change the ownership of this new space
-username=$(whoami)
-groupname=$(id -gn)
+    # change ownership
+    username=$(whoami)
+    groupname=$(id -gn)
+    sudo chown $username:$groupname /mydata
+    chmod 775 /mydata
+    ls -ld mydata
+else
+    echo "/mydata already exists. Skipping creation."
+fi
 
-sudo chown $username:$groupname mydata
-chmod 775 mydata
-# verify the result
-ls -ld mydata
+
+
 
 # Define working directory for CN5G
 # CN_DIR="/var/tmp/oai-cn5g"
